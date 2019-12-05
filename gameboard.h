@@ -29,6 +29,8 @@ public:
 
     size_t dimension() const;
     size_t hiddenElementValue() const;
+    Q_INVOKABLE bool move (int index);
+    using Position = std::pair<size_t, size_t>;
 
 private:
     std::vector<Tile> m_rawBoard;
@@ -38,6 +40,7 @@ private:
 
     bool isBoardValid() const;
     bool isPositionValid(const size_t position) const;
+    Position getRowCol(size_t index) const;
 };
 
 #endif // GAMEBOARD_H
