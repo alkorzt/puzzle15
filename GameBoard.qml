@@ -1,8 +1,10 @@
 import QtQuick 2.12
+import Game 1.0
 
 GridView {
     id: _root
-    model: 16
+    model: GameBoardModel {
+    }
 
     cellHeight: height / 4
     cellWidth:  width / 4
@@ -13,9 +15,13 @@ GridView {
         height: _root.cellHeight
         color: "lightcyan"
 
+        visible: display !== 16
+
         Tile {
             anchors.fill: _backgroundDelegate
             anchors.margins: 2
+
+            displayText: display
         }
     }
 }
