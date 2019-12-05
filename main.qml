@@ -8,8 +8,7 @@ Window {
     height: 400
     title: "Пятнашки"
 
-    Tile {
-        width: _root.width / 4
-        height: _root.height / 4
+    GameBoard  {
+        anchors.fill: parent
     }
 }
