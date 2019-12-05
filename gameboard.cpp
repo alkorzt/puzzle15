@@ -5,7 +5,8 @@
 GameBoard::GameBoard(size_t board_dimension, QObject *parent):
     QAbstractListModel {parent},
     m_dimension {board_dimension},
-    m_boardSize {board_dimension * board_dimension}
+    m_boardSize {board_dimension * board_dimension},
+    m_hiddenElementValue {m_boardSize}
 {
     m_rawBoard.resize(m_boardSize);
     std::iota(m_rawBoard.begin(), m_rawBoard.end(), 1);
@@ -46,6 +47,11 @@ QVariant GameBoard::data(const QModelIndex &index, int role) const
 size_t GameBoard::dimension() const
 {
     return m_dimension;
+}
+
+size_t GameBoard::hiddenElementValue() const
+{
+    return m_hiddenElementValue;
 }
 
 bool GameBoard::isBoardValid() const

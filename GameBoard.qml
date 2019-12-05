@@ -15,7 +15,7 @@ GridView {
         height: _root.cellHeight
         color: "lightcyan"
 
-        visible: display !== 16
+        visible: display !== _root.model.hiddenElementValue
 
         Tile {
             anchors.fill: _backgroundDelegate

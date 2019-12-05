@@ -6,6 +6,7 @@
 class GameBoard : public QAbstractListModel {
     Q_OBJECT
     Q_PROPERTY(int dimension READ dimension CONSTANT)
+    Q_PROPERTY(int hiddenElementValue READ hiddenElementValue CONSTANT)
 public:
     static constexpr size_t DEFAULT_DIMENSION  {4};
     GameBoard (size_t board_dimension = DEFAULT_DIMENSION,
@@ -27,11 +28,13 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
     size_t dimension() const;
+    size_t hiddenElementValue() const;
 
 private:
     std::vector<Tile> m_rawBoard;
     const size_t m_dimension;
     const size_t m_boardSize;
+    const size_t m_hiddenElementValue;
 
     bool isBoardValid() const;
     bool isPositionValid(const size_t position) const;
