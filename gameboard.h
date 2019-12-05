@@ -6,7 +6,9 @@
 class GameBoard : public QAbstractListModel {
     Q_OBJECT
 public:
-    GameBoard ();
+    static constexpr size_t DEFAULT_DIMENSION  {4};
+    GameBoard (size_t board_dimension = DEFAULT_DIMENSION,
+               QObject *parent = nullptr);
 
     struct Tile {
         size_t value {};
@@ -18,8 +20,13 @@ public:
             return other == value;
         }
     };
+
+    void shuffle();
+
 private:
     std::vector<Tile> m_rawBoard;
+    const size_t m_dimension;
+    const size_t m_boardSize;
 };
 
 #endif // GAMEBOARD_H
