@@ -5,6 +5,7 @@
 
 class GameBoard : public QAbstractListModel {
     Q_OBJECT
+    Q_PROPERTY(int dimension READ dimension CONSTANT)
 public:
     static constexpr size_t DEFAULT_DIMENSION  {4};
     GameBoard (size_t board_dimension = DEFAULT_DIMENSION,
@@ -24,6 +25,8 @@ public:
     void shuffle();
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+
+    size_t dimension() const;
 
 private:
     std::vector<Tile> m_rawBoard;

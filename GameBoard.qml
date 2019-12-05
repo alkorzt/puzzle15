@@ -6,8 +6,8 @@ GridView {
     model: GameBoardModel {
     }
 
-    cellHeight: height / 4
-    cellWidth:  width / 4
+    cellHeight: height / _root.model.dimension
+    cellWidth:  width / _root.model.dimension
 
     delegate: Rectangle {
         id: _backgroundDelegate

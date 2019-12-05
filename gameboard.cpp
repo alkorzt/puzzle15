@@ -43,6 +43,11 @@ QVariant GameBoard::data(const QModelIndex &index, int role) const
     return QVariant(static_cast<int>(m_rawBoard[index_row].value));
 }
 
+size_t GameBoard::dimension() const
+{
+    return m_dimension;
+}
+
 bool GameBoard::isBoardValid() const
 {
     int inv {0};
