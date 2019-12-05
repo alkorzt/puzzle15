@@ -24,3 +24,23 @@ int GameBoard::rowCount(const QModelIndex &parent) const
     Q_UNUSED(parent)
     return static_cast<int>(m_boardSize);
 }
+
+QVariant GameBoard::data(const QModelIndex &index, int role) const
+{
+    if (!index.isValid() || role != Qt::DisplayRole) {
+        return {};
+    }
+
+    const auto index_row {static_cast<size_t>(index.row())};
+
+    if (!isPositionValid(index_row)) {
+        return {};
+    }
+
+    return QVariant(static_cast<int>(m_rawBoard[index_row].value));
+}
+
+bool GameBoard::isPositionValid(const size_t position) const
+{
+    return position < m_boardSize;
+}

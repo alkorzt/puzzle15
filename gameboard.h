@@ -23,11 +23,14 @@ public:
 
     void shuffle();
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
 private:
     std::vector<Tile> m_rawBoard;
     const size_t m_dimension;
     const size_t m_boardSize;
+
+    bool isPositionValid(const size_t position) const;
 };
 
 #endif // GAMEBOARD_H
