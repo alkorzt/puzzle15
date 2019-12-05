@@ -30,6 +30,7 @@ private:
     const size_t m_dimension;
     const size_t m_boardSize;
 
+    bool isBoardValid() const;
     bool isPositionValid(const size_t position) const;
 };
 

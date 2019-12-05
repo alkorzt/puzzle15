@@ -16,7 +16,10 @@ void GameBoard::shuffle()
 {
     auto seed = std::chrono::system_clock::now().time_since_epoch().count();
     static std::mt19937 generator(seed);
-    std::shuffle(m_rawBoard.begin(), m_rawBoard.end(), generator);
+
+    do {
+        std::shuffle(m_rawBoard.begin(), m_rawBoard.end(), generator);
+    } while (!isBoardValid());
 }
 
 int GameBoard::rowCount(const QModelIndex &parent) const
@@ -38,6 +41,28 @@ QVariant GameBoard::data(const QModelIndex &index, int role) const
     }
 
     return QVariant(static_cast<int>(m_rawBoard[index_row].value));
+}
+
+bool GameBoard::isBoardValid() const
+{
+    int inv {0};
+    for (size_t i {0}; i < m_boardSize; ++i) {
+        for (size_t j = 0; j < i; ++j) {
+            if (m_rawBoard[j].value > m_rawBoard[i].value){
+                ++inv;
+            }
+        }
+    }
+
+    const size_t start_point = 1;
+
+    for (size_t i = 0; i < m_boardSize; ++i) {
+        if (m_rawBoard[i].value == m_boardSize){
+                inv += start_point + i / m_dimension;
+         }
+    }
+
+    return (inv % 2) == 0;
 }
 
 bool GameBoard::isPositionValid(const size_t position) const
