@@ -7,8 +7,15 @@ GridView {
     cellHeight: height / 4
     cellWidth:  width / 4
 
-    delegate: Tile {
-        width:  cellWidth
-        height: cellHeight
+    delegate: Rectangle {
+        id: _backgroundDelegate
+        width:  _root.cellWidth
+        height: _root.cellHeight
+        color: "lightcyan"
+
+        Tile {
+            anchors.fill: _backgroundDelegate
+            anchors.margins: 2
+        }
     }
 }
