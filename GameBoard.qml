@@ -6,6 +6,13 @@ GridView {
     model: GameBoardModel {
     }
 
+    move: Transition {
+        NumberAnimation {
+            properties: "x,y";
+            duration: 2000;
+        }
+    }
+
     cellHeight: height / _root.model.dimension
     cellWidth:  width / _root.model.dimension
 

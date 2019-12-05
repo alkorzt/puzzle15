@@ -1,6 +1,6 @@
 QT += quick
 
-CONFIG += c++11 sanitizer sanitize_address sanitize_leak sanitize_undefined
+CONFIG += c++11
 
 DEFINES += QT_DEPRECATED_WARNINGS
 
