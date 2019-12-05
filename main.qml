@@ -5,5 +5,10 @@ Window {
     visible: true
     width: 400
     height: 400
-    title: "Hello World"
+    title: "Пятнашки"
+
+    Tile {
+        width: 50
+        height: 50
+    }
 }
