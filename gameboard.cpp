@@ -18,3 +18,9 @@ void GameBoard::shuffle()
     static std::mt19937 generator(seed);
     std::shuffle(m_rawBoard.begin(), m_rawBoard.end(), generator);
 }
+
+int GameBoard::rowCount(const QModelIndex &parent) const
+{
+    Q_UNUSED(parent)
+    return static_cast<int>(m_boardSize);
+}

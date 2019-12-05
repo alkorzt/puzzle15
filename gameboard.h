@@ -22,6 +22,7 @@ public:
     };
 
     void shuffle();
+    int rowCount(const QModelIndex &parent = QModelIndex()) const override;
 
 private:
     std::vector<Tile> m_rawBoard;
