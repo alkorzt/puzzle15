@@ -109,6 +109,7 @@ bool GameBoard::move(int index)
 
     std::swap(hiddenElementIterator->value, m_rawBoard[index].value);
     emit dataChanged(createIndex(0, 0), createIndex(m_boardSize, 0));
+    emit tileMoved();
     return true;
 }
 

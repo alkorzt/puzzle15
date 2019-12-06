@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include "gameboard.h"
 #include "movecounter.h"
+#include "gamecontroller.h"
 
 int main(int argc, char *argv[])
 {
@@ -9,6 +10,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     qmlRegisterType<GameBoard>("Game", 1, 0, "GameBoardModel");
+    qmlRegisterType<GameController>("Game", 1, 0, "GameController");
     qmlRegisterType<MoveCounter>("Game", 1, 0, "MoveCounterController");
 
     QQmlApplicationEngine engine;

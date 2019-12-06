@@ -3,8 +3,6 @@ import Game 1.0
 
 GridView {
     id: _root
-    model: GameBoardModel {
-    }
 
     move: Transition {
         NumberAnimation {
@@ -37,5 +35,14 @@ GridView {
                 }
             }
         }
+    }
+
+    GameController{
+        id: _gameController
+        onTileMoved: _root.tileMoved();
+    }
+
+    Component.onCompleted: {
+        _root.model = _gameController.getModel();
     }
 }
