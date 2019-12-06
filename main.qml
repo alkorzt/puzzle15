@@ -15,6 +15,8 @@ Window {
         onTileMoved: _moveCounter.increment()
         onSolved: {
             _solvedDialog.open()
+            _moveCounter.updateBestScore();
+            _solvedDialog.open();
         }
     }
 
