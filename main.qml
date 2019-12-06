@@ -57,7 +57,7 @@ Window {
         onYes: {
             lastAnswerIsYes = true;
             _gameBoard.restartGame();
-            _moveCounterLabel.resetCurrentCount();
+            _moveCounter.resetCurrentCount();
          }
          onNo: Qt.quit()
      }
