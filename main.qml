@@ -25,4 +25,17 @@ Window {
            pointSize: parent.height / 4 * 0.15;
         }
     }
+
+    MoveCounter{
+        anchors {
+            right: parent.right
+            bottom: parent.bottom
+            margins: 5
+            rightMargin: 10
+        }
+
+        font {
+            pointSize: parent.height / 4 * 0.15;
+        }
+    }
 }
