@@ -13,6 +13,7 @@ GridView {
         }
     }
 
+    signal tileMoved();
     cellHeight: height / _root.model.dimension
     cellWidth:  width / _root.model.dimension
 

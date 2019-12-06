@@ -1,6 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include "gameboard.h"
+#include "movecounter.h"
 
 int main(int argc, char *argv[])
 {
@@ -8,6 +9,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     qmlRegisterType<GameBoard>("Game", 1, 0, "GameBoardModel");
+    qmlRegisterType<MoveCounter>("Game", 1, 0, "MoveCounterController");
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));
