@@ -1,5 +1,6 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
+import QtQuick.Dialogs 1.2
 
 Window {
     id: _root
@@ -11,6 +12,10 @@ Window {
     GameBoard  {
         anchors.fill: parent
         anchors.bottomMargin: parent.height - _timer.y
+        onTileMoved: _moveCounter.increment()
+        onSolved: {
+            _solvedDialog.open()
+        }
     }
 
     TimerLabel {
@@ -27,6 +32,7 @@ Window {
     }
 
     MoveCounter{
+        id: _moveCounter
         anchors {
             right: parent.right
             bottom: parent.bottom
@@ -38,4 +44,19 @@ Window {
             pointSize: parent.height / 4 * 0.15;
         }
     }
+
+    MessageDialog {
+        property bool lastAnswerIsYes: false
+        id: _solvedDialog
+        title: qsTr("Решено!")
+        text: qsTr("Хотите попробовать еще?")
+        standardButtons: StandardButton.Yes | StandardButton.No
+        icon: StandardIcon.Question
+        onYes: {
+            lastAnswerIsYes = true;
+            _gameBoard.restartGame();
+            _moveCounterLabel.resetCurrentCount();
+         }
+         onNo: Qt.quit()
+     }
 }

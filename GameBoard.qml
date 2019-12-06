@@ -12,6 +12,8 @@ GridView {
     }
 
     signal tileMoved();
+    signal solved()
+
     cellHeight: height / _root.model.dimension
     cellWidth:  width / _root.model.dimension
 
@@ -40,6 +42,11 @@ GridView {
     GameController{
         id: _gameController
         onTileMoved: _root.tileMoved();
+        onSolved: root.solved()
+    }
+
+    function restartGame() {
+        _gameController.restartGame()
     }
 
     Component.onCompleted: {

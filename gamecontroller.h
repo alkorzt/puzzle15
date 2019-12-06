@@ -9,8 +9,10 @@ class GameController : public QObject
 public:
     explicit GameController(QObject *parent = nullptr);
     Q_INVOKABLE GameBoard *getModel();
+    Q_INVOKABLE void restartGame();
 signals:
     void tileMoved();
+    void solved();
 private:
     GameBoard gameBoard;
 };

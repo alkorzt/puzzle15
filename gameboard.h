@@ -21,6 +21,9 @@ public:
         bool operator==(const size_t other) {
             return other == value;
         }
+        bool operator==(const Tile &other) const {
+            return other.value == value;
+        }
     };
 
     void shuffle();
@@ -34,6 +37,7 @@ public:
 
 signals:
     void tileMoved();
+    void solved();
 
 private:
     std::vector<Tile> m_rawBoard;
@@ -42,6 +46,7 @@ private:
     const size_t m_hiddenElementValue;
 
     bool isBoardValid() const;
+    bool isSolved() const;
     bool isPositionValid(const size_t position) const;
     Position getRowCol(size_t index) const;
 };

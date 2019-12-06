@@ -110,6 +110,9 @@ bool GameBoard::move(int index)
     std::swap(hiddenElementIterator->value, m_rawBoard[index].value);
     emit dataChanged(createIndex(0, 0), createIndex(m_boardSize, 0));
     emit tileMoved();
+    if (isSolved()) {
+           emit solved();
+    }
     return true;
 }
 
@@ -133,6 +136,13 @@ bool GameBoard::isBoardValid() const
     }
 
     return (inv % 2) == 0;
+}
+
+bool GameBoard::isSolved() const
+{
+    std::vector<Tile> solved_ethalon(m_boardSize);
+    std::iota(solved_ethalon.begin(), solved_ethalon.end(), 1);
+    return solved_ethalon == m_rawBoard;
 }
 
 bool GameBoard::isPositionValid(const size_t position) const
