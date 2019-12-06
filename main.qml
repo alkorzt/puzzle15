@@ -10,5 +10,19 @@ Window {
 
     GameBoard  {
         anchors.fill: parent
+        anchors.bottomMargin: parent.height - _timer.y
+    }
+
+    TimerLabel {
+        id: _timer
+        anchors {
+            left: parent.left
+            bottom: parent.bottom
+            margins: 5
+            leftMargin: 10
+        }
+        font {
+           pointSize: parent.height / 4 * 0.15;
+        }
     }
 }
